@@ -76,18 +76,18 @@ export function OurStorySection() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
         {/* Left: Overlapping Dual Photograph Composition */}
         <div className="lg:col-span-5">
-          <div className="relative mx-auto max-w-md pb-24 sm:pb-32 pr-4 sm:pr-6">
+          <div className="relative mx-auto w-full max-w-lg lg:max-w-none pb-28 sm:pb-36 lg:pb-48">
             {/* Primary Back Photo */}
             <StoryPhotoFrame
               src={storyPrimary.src}
               alt={storyPrimary.alt}
               caption={storyPrimary.caption}
               badgeLabel="NYSC · Osun State"
-              className="aspect-[3/4] w-[74%]"
+              className="aspect-[3/4] w-[82%]"
             />
 
             {/* Secondary Overlapping Foreground Photo */}
-            <div className="absolute bottom-0 right-0 w-[54%] rounded-2xl bg-[#FDFCF7] p-2 shadow-2xl">
+            <div className="absolute bottom-0 right-0 w-[62%] rounded-2xl bg-[#FDFCF7] p-2 sm:p-2.5 shadow-2xl">
               <StoryPhotoFrame
                 src={storySecondary.src}
                 alt={storySecondary.alt}
