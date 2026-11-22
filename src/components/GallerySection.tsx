@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Expand, MailOpen, Plus, Minus } from 'lucide-react';
+import { Expand, ExternalLink, Images, MailOpen } from 'lucide-react';
 import { weddingConfig, type GalleryPhoto } from '../config/weddingConfig';
 
 interface GallerySectionProps {
@@ -16,6 +15,8 @@ function GalleryTile({
   index: number;
   onClick: () => void;
 }) {
+  const isRotated = photo.rotate === 90;
+
   return (
     <button
       type="button"
@@ -27,10 +28,15 @@ function GalleryTile({
           <img
             src={photo.src}
             alt={photo.alt}
+            loading="lazy"
             referrerPolicy="no-referrer"
-            className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]"
+            className={
+              isRotated
+                ? 'h-full w-full object-cover object-center rotate-90 scale-[1.48] transition-transform duration-300 group-hover:scale-[1.52]'
+                : 'h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.03]'
+            }
           />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#062418]/75 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#062418]/80 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 p-4 text-[#F8F6EA] opacity-0 transition-opacity duration-200 group-hover:opacity-100">
             <p className="text-[10px] uppercase tracking-[0.2em] text-[#DEC17A]">
               {photo.category}
@@ -63,9 +69,7 @@ function GalleryTile({
 }
 
 export function GallerySection({ onSelectPhoto, onOpenInvitation }: GallerySectionProps) {
-  const [expanded, setExpanded] = useState(false);
   const photos = weddingConfig.gallery;
-  const visiblePhotos = expanded ? photos : photos.slice(0, 4);
 
   return (
     <section id="gallery" className="bg-[#FDFCF7] py-20 sm:py-24 px-6 border-b border-[#C5A04A]/15">
@@ -77,14 +81,14 @@ export function GallerySection({ onSelectPhoto, onOpenInvitation }: GallerySecti
           <h2 className="mt-2 font-serif text-4xl sm:text-5xl font-medium text-[#064B32]">
             Gallery
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm text-[#173B2B]/70">
-            Moments from our journey — from NYSC in Osun State to forever.
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-[#173B2B]/70">
+            From how we met during NYSC and our journey together to our Introduction Ceremony and pre-wedding portraits.
           </p>
         </div>
 
-        {/* 4-Column Responsive Gallery Grid */}
+        {/* 4-Column Responsive Gallery Grid (All Photos) */}
         <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 md:grid-cols-4">
-          {visiblePhotos.map((photo, index) => (
+          {photos.map((photo, index) => (
             <GalleryTile
               key={photo.id}
               photo={photo}
@@ -94,28 +98,8 @@ export function GallerySection({ onSelectPhoto, onOpenInvitation }: GallerySecti
           ))}
         </div>
 
-        {/* View More Photos & View Invitation Card Controls */}
+        {/* View Invitation Card & View Introduction Shots Controls */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          {photos.length > 4 && (
-            <button
-              type="button"
-              onClick={() => setExpanded((prev) => !prev)}
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[#064B32]/30 bg-white px-7 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#064B32] transition-colors hover:border-[#064B32] hover:bg-[#F8F6EA] whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#064B32]"
-            >
-              {expanded ? (
-                <>
-                  <Minus className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>Show Fewer Photos</span>
-                </>
-              ) : (
-                <>
-                  <Plus className="h-3.5 w-3.5" aria-hidden="true" />
-                  <span>View More Photos ({photos.length - 4})</span>
-                </>
-              )}
-            </button>
-          )}
-
           <button
             type="button"
             onClick={onOpenInvitation}
@@ -124,6 +108,17 @@ export function GallerySection({ onSelectPhoto, onOpenInvitation }: GallerySecti
             <MailOpen className="h-4 w-4 text-[#DEC17A]" aria-hidden="true" />
             <span>View Invitation Card</span>
           </button>
+
+          <a
+            href={weddingConfig.introductionShotsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[#C5A04A] bg-[#F8F6EA] px-7 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#064B32] shadow-sm transition-colors hover:bg-[#C5A04A]/15 whitespace-nowrap focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#064B32]"
+          >
+            <Images className="h-4 w-4 text-[#064B32]" aria-hidden="true" />
+            <span>View Introduction Shots</span>
+            <ExternalLink className="h-3.5 w-3.5 text-[#C5A04A]" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>

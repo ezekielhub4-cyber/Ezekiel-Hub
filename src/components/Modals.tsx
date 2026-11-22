@@ -137,12 +137,18 @@ export function LightboxModal({
         className="flex max-w-3xl flex-col items-center text-center"
       >
         {current.src ? (
-          <img
-            src={current.src}
-            alt={current.alt}
-            referrerPolicy="no-referrer"
-            className="max-h-[75vh] w-auto rounded-xl object-contain shadow-2xl"
-          />
+          <div className="flex max-h-[72vh] items-center justify-center overflow-hidden rounded-xl">
+            <img
+              src={current.src}
+              alt={current.alt}
+              referrerPolicy="no-referrer"
+              className={
+                current.rotate === 90
+                  ? 'max-h-[54vw] sm:max-h-[48vh] w-auto rotate-90 rounded-xl object-contain shadow-2xl'
+                  : 'max-h-[72vh] w-auto rounded-xl object-contain shadow-2xl'
+              }
+            />
+          </div>
         ) : (
           <div className="relative flex h-[60vh] w-[82vw] max-w-md flex-col items-center justify-between rounded-2xl botanical-emerald-surface p-8 text-[#F8F6EA] shadow-2xl ring-1 ring-[#C5A04A]/40">
             <div className="pointer-events-none absolute inset-4 rounded-xl border border-[#C5A04A]/30" />
