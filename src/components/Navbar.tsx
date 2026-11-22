@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: 'Story', href: '#story' },
   { label: 'Events', href: '#events' },
   { label: 'Gallery', href: '#gallery' },
+  { label: 'Gift Registry', href: '#gift-registry' },
 ];
 
 export function Navbar() {

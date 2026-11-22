@@ -32,6 +32,14 @@ export interface ColourSwatch {
   gradient?: string;
 }
 
+export interface GiftAccount {
+  id: string;
+  giftTitle: string;
+  bankName: string;
+  accountNumber: string;
+  accountName: string;
+}
+
 export const weddingConfig = {
   brand: {
     title: "DEstined '26",
@@ -143,7 +151,7 @@ export const weddingConfig = {
     heading: 'A Divine Arrangement',
     paragraphs: [
       'Our meeting was truly a divine orchestration.',
-      'Our paths first crossed in Delta State during the National Youth Service Corps (NYSC) programme. She was in Stream 1, while I was in Stream 2, yet somehow, we never met.',
+      'Our path never crossed in Delta state, we only camped there, she was in stream 1 and I was in Stream 2.',
       "She attempted to relocate first, but unfortunately, it didn't work out. Later, I applied for relocation to Osun State, and mine was successful.",
       'To our greatest surprise, her relocation was eventually approved too, and we found ourselves posted to the same state, the same community, but different Places of Primary Assignment (PPAs).',
       'Then came one fateful evening.',
@@ -347,15 +355,26 @@ export const weddingConfig = {
   },
 
   gifts: {
-    eyebrow: 'Your Love Is Enough',
-    title: 'Gifts & Blessings',
+    eyebrow: 'YOUR LOVE IS ENOUGH',
+    title: 'Registry & Gifts',
     subtitle:
-      'Your prayers and presence as we exchange our vows mean everything to us. Should you wish to honour us with a gift, our gift registry details will be shared here once finalized.',
-    // Keep showAccountDetails false until the couple supplies actual gift or bank details
-    showAccountDetails: false,
-    bankName: '',
-    accountNumber: '',
-    accountName: '',
+      'Your presence at our wedding is the greatest gift of all. However, if you wish to honour us with a gift, a cash contribution towards our new life together would be deeply appreciated.',
+    accounts: [
+      {
+        id: 'palmpay-david',
+        giftTitle: 'Cash Gift',
+        bankName: 'PalmPay',
+        accountNumber: '8141269575',
+        accountName: 'David Sunday Dada',
+      },
+      {
+        id: 'opay-esther',
+        giftTitle: 'Cash Gift',
+        bankName: 'OPay',
+        accountNumber: '7014770732',
+        accountName: 'Esther Ayomide Kolade',
+      },
+    ] satisfies GiftAccount[],
   },
 
   rsvp: {
