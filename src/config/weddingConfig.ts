@@ -151,7 +151,7 @@ export const weddingConfig = {
     heading: 'A Divine Arrangement',
     paragraphs: [
       'Our meeting was truly a divine orchestration.',
-      'Our path never crossed in Delta state, we only camped there, she was in stream 1 and I was in Stream 2.',
+      'We both camped in Delta State for NYSC, she was in Stream 1 and I was in Stream 2, yet we never met in Delta.',
       "She attempted to relocate first, but unfortunately, it didn't work out. Later, I applied for relocation to Osun State, and mine was successful.",
       'To our greatest surprise, her relocation was eventually approved too, and we found ourselves posted to the same state, the same community, but different Places of Primary Assignment (PPAs).',
       'Then came one fateful evening.',
